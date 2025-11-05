@@ -26,6 +26,15 @@
       font-size: 16px;
       cursor: pointer;
     }
+    #videoContainer {
+      margin-top: 20px;
+      display: none; /* Hidden until RSVP clicked */
+    }
+    iframe {
+      width: 560px;
+      height: 315px;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -33,11 +42,24 @@
     <h2>Confirm Attendance</h2>
     <p>Click the button below to RSVP for the company event.</p>
     <button onclick="rickRoll()">Confirm RSVP</button>
+    <div id="videoContainer">
+      <iframe id="rickVideo" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
   </div>
 
   <script>
     function rickRoll() {
-      window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      const video = document.getElementById('rickVideo');
+      const container = document.getElementById('videoContainer');
+
+      // Set the YouTube embed URL with autoplay and muted
+      video.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1";
+
+      // Show the iframe
+      container.style.display = "block";
+
+      // Optional: scroll the video into view
+      video.scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 </body>
